@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Anurag ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background stars -->
+    <div id="stars-container"></div>
+
+    <!-- Shooting star -->
+    <div class="shooting-star"></div>
+
+    <!-- Moon -->
+    <div class="moon">
+        <div class="moon-shadow"></div>
+    </div>
+
+    <!-- Fireworks -->
+    <canvas id="fireworks"></canvas>
+
+    <!-- Main birthday content -->
+    <main class="container">
+
+        <p class="top-text">
+            A SPECIAL DAY FOR SOMEONE SPECIAL
+        </p>
+
+        <h1>Happy Birthday</h1>
+
+        <h2>Anurag ❤️</h2>
+
+        <p class="message">
+            Tonight, the stars shine a little brighter for you ✨
+        </p>
+
+        <!-- Main heart -->
+        <div class="heart" id="heart">
+            ❤️
+        </div>
+
+        <p class="click-text">
+            Click the heart for a magical surprise
+        </p>
+
+        <!-- Birthday letter -->
+        <button class="letter-button" id="openLetter">
+            💌 Open Your Special Letter
+        </button>
+
+        <!-- Music player -->
+        <div class="music-player">
+
+            <button id="musicButton">▶</button>
+
+            <span id="musicStatus">
+                Play birthday music
+            </span>
+
+        </div>
+
+        <p class="footer">
+            Cheers to you and another year of being iconic❤️
+        </p>
+
+    </main>
+
+    <!-- Heart explosion -->
+    <div id="heart-container"></div>
+
+    <!-- Birthday letter popup -->
+    <div class="letter-overlay" id="letterOverlay">
+
+        <div class="letter-box">
+
+            <button class="close-letter" id="closeLetter">
+                ✕
+            </button>
+
+            <div class="envelope-icon">💌</div>
+
+            <h2>Dear Anurag,</h2>
+
+            <div class="letter-content">
+
+                <p>Happy Birthday to you! ❤️</p>
+
+                <p>
+                    May your life always be filled with happiness,
+                    success, laughter and beautiful memories.
+                </p>
+
+                <p>
+                    May every dream you have come true,
+                    and may every new day bring you a reason to smile.
+                </p>
+
+                <p>
+                    You deserve all the beautiful things
+                    this world has to offer.
+                </p>
+
+                <p class="special-wish">
+                    Keep smiling, keep shining and stay amazing! ✨
+                </p>
+
+                <p class="signature">
+                    With lots of love ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Birthday music -->
+    <audio id="birthdayMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

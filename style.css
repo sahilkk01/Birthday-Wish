@@ -1,0 +1,535 @@
+
+/* ============================
+   GLOBAL SETTINGS
+============================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #030006;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* ============================
+   FALLING STARS
+============================ */
+
+#stars-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    top: -30px;
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #ff66cc,
+        0 0 20px #ff66cc;
+
+    animation: falling linear forwards;
+}
+
+@keyframes falling {
+
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ============================
+   SHOOTING STAR
+============================ */
+
+.shooting-star {
+    position: fixed;
+    top: 12%;
+    left: 100%;
+
+    width: 120px;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fff,
+        #ff77dd
+    );
+
+    box-shadow: 0 0 15px #ff77dd;
+
+    transform: rotate(-35deg);
+
+    animation: shooting 5s linear infinite;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes shooting {
+
+    0%, 65% {
+        left: 110%;
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    85% {
+        left: -30%;
+        opacity: 0;
+    }
+
+    100% {
+        left: -30%;
+        opacity: 0;
+    }
+}
+
+/* ============================
+   MOON
+============================ */
+
+.moon {
+    position: fixed;
+    top: 45px;
+    right: 12%;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: #fff5cf;
+
+    box-shadow:
+        0 0 20px #fff5cf,
+        0 0 50px #ffcc88,
+        0 0 100px rgba(255, 204, 136, 0.3);
+
+    z-index: 0;
+
+    animation: moonGlow 3s infinite alternate;
+}
+
+.moon-shadow {
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    top: -12px;
+    left: 25px;
+
+    border-radius: 50%;
+    background: #030006;
+}
+
+@keyframes moonGlow {
+
+    from {
+        filter: brightness(0.85);
+    }
+
+    to {
+        filter: brightness(1.2);
+    }
+}
+
+/* ============================
+   MAIN CONTAINER
+============================ */
+
+.container {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 35px 15px;
+    width: 100%;
+}
+
+.top-text {
+    color: #ff8fcf;
+
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(32px, 7vw, 55px);
+
+    color: white;
+
+    text-shadow: 0 0 20px #ff3377;
+}
+
+.container h2 {
+    font-size: clamp(38px, 8vw, 60px);
+
+    color: #ff4f91;
+
+    margin-top: 10px;
+
+    text-shadow:
+        0 0 10px #ff3377,
+        0 0 30px #ff3377;
+}
+
+.message {
+    color: #d4b9c9;
+
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+/* ============================
+   MAIN HEART
+============================ */
+
+.heart {
+    font-size: 95px;
+
+    display: inline-block;
+    margin-top: 25px;
+
+    cursor: pointer;
+    user-select: none;
+
+    animation: heartbeat 1s infinite;
+
+    filter: drop-shadow(0 0 20px #ff1744);
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.click-text {
+    font-size: 13px;
+    color: #ff9ac9;
+    margin-top: 15px;
+}
+
+/* ============================
+   HEART EXPLOSION
+============================ */
+
+#heart-container {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 5;
+
+    overflow: hidden;
+}
+
+.small-heart {
+    position: absolute;
+    font-size: 25px;
+
+    animation: heartFly 2.5s ease-out forwards;
+}
+
+@keyframes heartFly {
+
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(var(--x), var(--y))
+            rotate(720deg)
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+/* ============================
+   LETTER BUTTON
+============================ */
+
+.letter-button {
+    display: block;
+
+    margin: 30px auto 15px;
+    padding: 14px 25px;
+
+    border: 1px solid #ff5caa;
+    border-radius: 30px;
+
+    background: linear-gradient(
+        45deg,
+        #a90052,
+        #ff4f91
+    );
+
+    color: white;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(255, 50, 130, 0.4);
+
+    transition: 0.3s;
+}
+
+.letter-button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 30px #ff4f91;
+}
+
+/* ============================
+   LETTER POPUP
+============================ */
+
+.letter-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.4s;
+
+    z-index: 10;
+}
+
+.letter-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.letter-box {
+    position: relative;
+
+    background: linear-gradient(
+        145deg,
+        #25091e,
+        #100813
+    );
+
+    border: 1px solid #ff5caa;
+    border-radius: 20px;
+
+    padding: 35px 25px;
+
+    max-width: 450px;
+    width: 100%;
+
+    text-align: center;
+
+    box-shadow: 0 0 40px rgba(255, 50, 150, 0.4);
+
+    transform: scale(0.7);
+    transition: 0.4s;
+
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.letter-overlay.active .letter-box {
+    transform: scale(1);
+}
+
+.close-letter {
+    position: absolute;
+
+    right: 15px;
+    top: 12px;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.envelope-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.letter-box h2 {
+    color: #ff7bb7;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.letter-content p {
+    color: #f5dce9;
+    line-height: 1.8;
+    margin: 13px 0;
+    font-size: 14px;
+}
+
+.letter-content .special-wish {
+    color: #ff80bb;
+    font-weight: bold;
+}
+
+.letter-content .signature {
+    color: #ff4f91;
+    font-size: 17px;
+    margin-top: 25px;
+}
+
+/* ============================
+   MUSIC PLAYER
+============================ */
+
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+    margin: 25px auto;
+
+    color: #ffb3d8;
+    font-size: 13px;
+}
+
+.music-player button {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #ff5caa;
+    border-radius: 50%;
+
+    background: #a90052;
+    color: white;
+
+    cursor: pointer;
+    font-size: 16px;
+
+    box-shadow: 0 0 15px #ff3377;
+}
+
+/* ============================
+   FOOTER
+============================ */
+
+.footer {
+    color: #ff9ac9;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+/* ============================
+   FIREWORKS CANVAS
+============================ */
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* ============================
+   MOBILE RESPONSIVE
+============================ */
+
+@media (max-width: 600px) {
+
+    .moon {
+        width: 60px;
+        height: 60px;
+
+        top: 25px;
+        right: 10%;
+    }
+
+    .moon-shadow {
+        width: 58px;
+        height: 58px;
+
+        left: 17px;
+        top: -8px;
+    }
+
+    .top-text {
+        letter-spacing: 2px;
+        font-size: 9px;
+    }
+
+    .heart {
+        font-size: 80px;
+    }
+
+    .letter-box {
+        padding: 35px 20px;
+    }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .star,
+    .shooting-star,
+    .moon,
+    .heart {
+        animation: none;
+    }
+}
